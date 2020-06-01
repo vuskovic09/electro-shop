@@ -1,14 +1,3 @@
-<?php
-$navQuery = "SELECT * FROM `navigation`";
-$execNav = $pdo->query($navQuery);
-$dataNav = $execNav -> fetchAll();
-
-$catQuery = "SELECT * FROM `categories`";
-$execCat = $pdo->query($catQuery);
-$dataCat = $execCat -> fetchAll();
-
-?>
-
 <!-- FOOTER -->
 <footer id="footer">
     <!-- top footer -->
@@ -31,28 +20,31 @@ $dataCat = $execCat -> fetchAll();
 
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
-                        <h3 class="footer-title">Information</h3>
+                        <h3 class="footer-title">Categories</h3>
                         <ul class="footer-links">
-                            <?php foreach($dataNav as $rowNav){ ?>
-                                <li><a href="<?php echo $path . $rowNav['href']?>"><?php echo $rowNav['name']?></a></li>
-                            <?php   } ?>
+                            <li><a href="#">Hot deals</a></li>
+                            <li><a href="#">Laptops</a></li>
+                            <li><a href="#">Smartphones</a></li>
+                            <li><a href="#">Cameras</a></li>
+                            <li><a href="#">Accessories</a></li>
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="clearfix visible-xs"></div>
 
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
-                        <h3 class="footer-title">Categories</h3>
+                        <h3 class="footer-title">Information</h3>
                         <ul class="footer-links">
-                            <?php foreach($dataCat as $rowCat){ ?>
-                                <li><a href="#"><?php echo $rowCat['name']?></a></li>
-                            <?php   } ?>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Orders and Returns</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
                         </ul>
                     </div>
                 </div>
-
 
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
