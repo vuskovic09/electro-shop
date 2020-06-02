@@ -2188,3 +2188,7 @@ textarea.input {
     margin-top: 10px;
   }
 }
+
+.store-pagination {
+  width: 100%;
+}
