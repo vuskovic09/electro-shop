@@ -2,8 +2,8 @@
     $laptopQuery = "SELECT  `products`.`name` AS pName, `products`.`price` AS pPrice, `products`.`alt` AS pAlt, `products`.`image` AS pImage, `categories`.`name` 
                     FROM `products`
                     LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`id`
-                    WHERE `products`.`price` < 1000 AND `categories`.`name` LIKE 'Laptops';
-                    ORDER BY RAND() LIMIT 4";
+                    WHERE `products`.`price` < 1000 AND `categories`.`name` LIKE 'Laptops'
+                    ORDER BY price ASC LIMIT 4;";
     $execLaptop = $pdo->query($laptopQuery);
     $dataLaptop = $execLaptop -> fetchAll(PDO::FETCH_ASSOC);
     $execLaptop -> closeCursor();
@@ -11,8 +11,8 @@
     $miceQuery = "SELECT  `products`.`name` AS pName, `products`.`price` AS pPrice, `products`.`alt` AS pAlt, `products`.`image` AS pImage, `categories`.`name` 
                     FROM `products`
                     LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`id`
-                    WHERE `products`.`price` < 50 AND `categories`.`name` LIKE 'Mice';
-                    ORDER BY RAND() LIMIT 4";
+                    WHERE `products`.`price` < 50 AND `categories`.`name` LIKE 'Mice'
+                    ORDER BY price ASC LIMIT 4;";
     $execMice = $pdo->query($miceQuery);
     $dataMice = $execMice -> fetchAll(PDO::FETCH_ASSOC);
     $execMice -> closeCursor();
@@ -20,8 +20,8 @@
     $cameraQuery = "SELECT  `products`.`name` AS pName, `products`.`price` AS pPrice, `products`.`alt` AS pAlt, `products`.`image` AS pImage, `categories`.`name` 
                     FROM `products`
                     LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`id`
-                    WHERE `products`.`price` < 500 AND `categories`.`name` LIKE 'Cameras';
-                    ORDER BY RAND() LIMIT 4";
+                    WHERE `products`.`price` < 500 AND `categories`.`name` LIKE 'Cameras'
+                    ORDER BY price ASC LIMIT 4;";
     $execCamera = $pdo->query($cameraQuery);
     $dataCamera = $execCamera -> fetchAll(PDO::FETCH_ASSOC);
     $execCamera -> closeCursor();
@@ -33,7 +33,10 @@
     <div class="container">
         <!-- row -->
         <div class="row">
-            
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h3 class="homeP">Maintaining technology standards for thousands since 1998. Highest quality equipment, ranging from laptops, cameras, mice,all tech accesories imaginable.</h3>
+            </div>
         </div>
         <!-- /row -->
     </div>
@@ -41,258 +44,6 @@
 </div>
 <!-- /SECTION -->
 
-<!-- SECTION -->
-<div class="section">
-    <!-- container -->
-    <div class="container">
-        <!-- row -->
-        <div class="row">
-
-            <!-- section title -->
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h3 class="title">New Products</h3>
-                </div>
-            </div>
-            <!-- /section title -->
-
-            <!-- Products tab & slick -->
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="products-tabs">
-                        <!-- tab -->
-                        <div id="tab1" class="tab-pane active">
-                            <div class="products-slick" data-nav="#slick-nav-1">
-                                <!-- product -->
-                                <div class="product">
-                                    <div class="product-img">
-                                        <img src="./img/product01.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                        <div class="product-rating">
-                                        </div>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                    </div>
-                                </div>
-                                <!-- /product -->
-
-                                <!-- product -->
-                                <div class="product">
-                                    <div class="product-img">
-                                        <img src="./img/product02.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                        <div class="product-rating">
-                                        </div>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                    </div>
-                                </div>
-                                <!-- /product -->
-
-                                <!-- product -->
-                                <div class="product">
-                                    <div class="product-img">
-                                        <img src="./img/product03.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                        <div class="product-rating">
-                                        </div>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                    </div>
-                                </div>
-                                <!-- /product -->
-
-                                <!-- product -->
-                                <div class="product">
-                                    <div class="product-img">
-                                        <img src="./img/product04.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                        <div class="product-rating">
-                                        </div>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                    </div>
-                                </div>
-                                <!-- /product -->
-
-                                <!-- product -->
-                                <div class="product">
-                                    <div class="product-img">
-                                        <img src="./img/product05.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                        <div class="product-rating">
-                                        </div>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                    </div>
-                                </div>
-                                <!-- /product -->
-                            </div>
-                            <div id="slick-nav-1" class="products-slick-nav"></div>
-                        </div>
-                        <!-- /tab -->
-                    </div>
-                </div>
-            </div>
-            <!-- Products tab & slick -->
-        </div>
-        <!-- /row -->
-    </div>
-    <!-- /container -->
-</div>
-<!-- /SECTION -->
-
-<!-- SECTION -->
-<div class="section">
-    <!-- container -->
-    <div class="container">
-        <!-- row -->
-        <div class="row">
-
-            <!-- section title -->
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h3 class="title">Top selling</h3>
-                    <div class="section-nav">
-                </div>
-            </div>
-            <!-- /section title -->
-
-            <!-- Products tab & slick -->
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="products-tabs">
-                        <!-- tab -->
-                        <div id="tab2" class="tab-pane fade in active">
-                            <div class="products-slick" data-nav="#slick-nav-2">
-                                <!-- product -->
-                                <div class="product">
-                                    <div class="product-img">
-                                        <img src="./img/product06.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                        <div class="product-rating">
-                                        </div>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                    </div>
-                                </div>
-                                <!-- /product -->
-
-                                <!-- product -->
-                                <div class="product">
-                                    <div class="product-img">
-                                        <img src="./img/product07.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                        <div class="product-rating">
-                                        </div>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                    </div>
-                                </div>
-                                <!-- /product -->
-
-                                <!-- product -->
-                                <div class="product">
-                                    <div class="product-img">
-                                        <img src="./img/product08.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                        <div class="product-rating">
-                                        </div>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                    </div>
-                                </div>
-                                <!-- /product -->
-
-                                <!-- product -->
-                                <div class="product">
-                                    <div class="product-img">
-                                        <img src="./img/product09.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                        <div class="product-rating">
-                                        </div>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                    </div>
-                                </div>
-                                <!-- /product -->
-
-                                <!-- product -->
-                                <div class="product">
-                                    <div class="product-img">
-                                        <img src="./img/product01.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                        <div class="product-rating">
-                                        </div>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                    </div>
-                                </div>
-                                <!-- /product -->
-                            </div>
-                            <div id="slick-nav-2" class="products-slick-nav"></div>
-                        </div>
-                        <!-- /tab -->
-                    </div>
-                </div>
-            </div>
-            <!-- /Products tab & slick -->
-        </div>
-        <!-- /row -->
-    </div>
-    <!-- /container -->
-</div>
-<!-- /SECTION -->
 
 <!-- SECTION -->
 <div class="section">
@@ -319,6 +70,12 @@
                                 <div class="product-body">
                                     <h3 class="product-name"><?php echo $laptopRow['pName']?></h3>
                                     <h4 class="product-price">$<?php echo $laptopRow['pPrice']?></h4>
+                                    <h5>
+                                        <a class="cartAdd">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            <span>Add to Cart</span>
+                                        </a>
+                                    </h5>
                                 </div>
                             </div>
                         <?php } ?>
@@ -345,6 +102,12 @@
                                     <div class="product-body">
                                         <h3 class="product-name"><?php echo $miceRow['pName']?></h3>
                                         <h4 class="product-price">$<?php echo $miceRow['pPrice']?></h4>
+                                        <h5>
+                                            <a class="cartAdd">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                <span>Add to Cart</span>
+                                            </a>
+                                        </h5>
                                     </div>
                                 </div>
                         <?php } ?>
@@ -373,6 +136,12 @@
                                     <div class="product-body">
                                         <h3 class="product-name"><?php echo $cameraRow['pName']?></h3>
                                         <h4 class="product-price">$<?php echo $cameraRow['pPrice']?></h4>
+                                        <h5>
+                                            <a class="cartAdd">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                <span>Add to Cart</span>
+                                            </a>
+                                        </h5>
                                     </div>
                                 </div>
                         <?php } ?>
@@ -389,38 +158,3 @@
 </div>
 <!-- /SECTION -->
 
-<!-- NEWSLETTER -->
-<div id="newsletter" class="section">
-    <!-- container -->
-    <div class="container">
-        <!-- row -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="newsletter">
-                    <p>Sign Up for the <strong>NEWSLETTER</strong></p>
-                    <form>
-                        <input class="input" type="email" placeholder="Enter Your Email">
-                        <button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
-                    </form>
-                    <ul class="newsletter-follow">
-                        <li>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- /row -->
-    </div>
-    <!-- /container -->
-</div>
-<!-- /NEWSLETTER -->

@@ -1,3 +1,38 @@
+<?php
+
+if(isset($_POST['message'])){
+    $message = $_POST['content'];
+    $query = "INSERT INTO messages (message)
+                VALUES (:msg)";
+    $prepare = $pdo->prepare($query);
+    $prepare->bindParam(':msg', $message, PDO::PARAM_STR);
+    $execute = $prepare->execute();
+}
+
+?>
+<!-- contact form -->
+<div id="newsletter" class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="newsletter">
+                    <p>Send a message to our staff!</p>
+                    <form action="" method="post">
+                        <input class="input" type="text" name="content" placeholder="Enter Your Message">
+                        <input type="submit" class="newsletter-btn" name="message" value="Send"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /contact form -->
+
+
 <!-- FOOTER -->
 <footer id="footer">
     <!-- top footer -->
@@ -6,19 +41,8 @@
         <div class="container">
             <!-- row -->
             <div class="row">
-                <div class="col-md-4 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">About Us</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
-                        <ul class="footer-links">
-                            <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-                            <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-                            <li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
-                        </ul>
-                    </div>
-                </div>
 
-                <div class="col-md-4 col-xs-6">
+                <div class="col-md-6 col-xs-6">
                     <div class="footer">
                         <h3 class="footer-title">Navigation</h3>
                         <ul class="footer-links">
@@ -31,12 +55,23 @@
 
                 <div class="clearfix visible-xs"></div>
 
-                <div class="col-md-4 col-xs-6">
+                <div class="col-md-6 col-xs-6">
                     <div class="footer">
-                        <h3 class="footer-title">Service</h3>
+                        <h3 class="footer-title">Account</h3>
                         <ul class="footer-links">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">View Cart</a></li>
+                            <?php 
+                                if(isset($_SESSION['loggedUserName']) && !empty($_SESSION['loggedUserName'])) { ?>
+                                    <li><a href="<?php echo $path; ?>/profile.php"><?php print_r($_SESSION['loggedUserName']); ?></a></li>
+                                    <?php if($_SESSION['loggedUserRole'] == 0){?> 
+                                    <li><a href="<?php echo $path; ?>/adminPanel.php">Admin Panel</a></li>
+                                    <?php }; ?>
+                                    <li><a href="<?php echo $path; ?>/logout.php">LOGOUT</a></li>
+                                <?php
+                                } else { ?>
+                                    <li><a href="<?php echo $path; ?>/login.php">Login</a></li>
+                                    <li><a href="<?php echo $path; ?>/registration.php">Register</a></li>
+                                    </ul> 
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>

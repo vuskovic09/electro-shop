@@ -5,15 +5,26 @@ session_start();
 
 require('config.php');
 require('connection.php');
-
-
 ?>
 		<?php require_once('header.php'); ?>
-	
+
 		<main>
-			<?php require_once('main.php'); ?>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2 class="profileInfo">Username: <?php echo $_SESSION['loggedUserName'] ?></h2>
+					</div>
+					<div class="col-md-6">
+						<h3 class="profileInfo">User E-Mail: <?php echo $_SESSION['loggedUserEmail'] ?></h3>
+					</div>	
+					<div class="col-md-6">
+						<h3 class="profileInfo">User Join Date: <?php echo $_SESSION['loggedUserCreated'] ?></h3>
+					</div>
+				</div>
+			</div>
+			
 		</main>
-		
+
 		<?php require_once('footer.php'); ?>
 		
 

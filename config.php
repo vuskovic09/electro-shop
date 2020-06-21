@@ -1,10 +1,10 @@
 <?php
    
 	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$database = "electroshop";
+	$username = "id13947983_electroshopun";
+	$password = "eShopPassword11!";
+	$database = "id13947983_electroshop";
 
-	$path = '/electro-shop';
+	$path = '';
 
 ?>

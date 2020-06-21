@@ -14,43 +14,46 @@ $compQuery = "SELECT * FROM `companies`";
 $execComp = $pdo->query($compQuery);
 $dataComp = $execComp -> fetchAll();
 
-?><!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+if(isset($_POST['add_to_cart'])){
+    if(isset($_SESSION["shopping_cart"])){
+        $item_array_id = array_column($_SESSION['shopping_cart'], 'item_id');
+        if(!in_array($_GET['id'], $item_array_id)){
+            $count = count($_SESSION['shopping_cart']);
+            $item_array = array(
+                'item_id' => $_GET['id'],
+                'item_name' => $_POST['hidden_name'],
+                'item_price' => $_POST['hidden_price'],
+                'item_image' => $_POST['hidden_img']
+            );
+            $_SESSION['shopping_cart'][$count] = $item_array;
+        }else {
+            echo '<script>alert("Item already added.")</script>';
+            echo '<script>window.location="index.php"</script>';
+        }
+    } else {
+        $item_array = array(
+            'item_id' => $_GET['id'],
+            'item_name' => $_POST['hidden_name'],
+            'item_price' => $_POST['hidden_price'],
+            'item_image' => $_POST['hidden_img']
+        );
+        $_SESSION['shopping_cart'] [0] = $item_array;
+    }
+}
 
-		<title>Electro - HTML Ecommerce Template</title>
+if(isset($_GET['action'])){
+    if($_GET['action'] == 'delete'){
+        foreach($_SESSION['shopping_cart'] as $keys => $values){
+            if($values['item_id'] == $_GET['id']) {
+                unset($_SESSION['shopping_cart'][$keys]);
+                echo '<script>alert("Item removed")</script>';
+                echo '<script>window.location="shop.php"</script>';
+            }
+        }
+    }
+}
 
-		<!-- Google font -->
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-
-		<!-- Bootstrap -->
-		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
-
-		<!-- Slick -->
-		<link type="text/css" rel="stylesheet" href="css/slick.css"/>
-		<link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
-
-		<!-- nouislider -->
-		<link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
-
-		<!-- Font Awesome Icon -->
-		<link rel="stylesheet" href="css/font-awesome.min.css">
-
-		<!-- Custom stlylesheet -->
-		<link type="text/css" rel="stylesheet" href="css/style.css"/>
-
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
-    </head>
-	<body>
+?>
 		<?php require_once('header.php'); ?>
 	
 		<main>
@@ -165,13 +168,16 @@ $dataComp = $execComp -> fetchAll();
                                                     <img class="shop-image" src="./img/<?php echo $row['image'] ?>" alt="<?php echo $row['alt']?>" />
                                                 </div>
                                                 <div class="product-body">
-                                                    <p class="product-category"><?php echo $row['catName'] ?></p>
-                                                    <p class="product-category"><?php echo $row['compName'] ?></p>
-                                                    <h3 class="product-name"><?php echo $row['name'] ?></h3>
-                                                    <h4 class="product-price">$<?php echo $row['price'] ?></h4>
-                                                </div>
-                                                <div class="add-to-cart">
-                                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                    <form method="post" action="shop.php?action=add&id=<?php echo $row['id']?>">
+                                                        <p class="product-category"><?php echo $row['catName'] ?></p>
+                                                        <p class="product-category"><?php echo $row['compName'] ?></p>
+                                                        <h3 class="product-name"><?php echo $row['name'] ?></h3>
+                                                        <h4 class="product-price">$<?php echo $row['price'] ?></h4>
+                                                        <input type="hidden" name="hidden_name" value="<?php echo $row['name'] ?>" />
+                                                        <input type="hidden" name="hidden_price" value="<?php echo $row['price'] ?>" />
+                                                        <input type="hidden" name="hidden_img" value="<?php echo $row['image'] ?>" />
+                                                        <input type="submit" name="add_to_cart" class="cartBTN" value="Add to cart" />
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
