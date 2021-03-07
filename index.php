@@ -6,7 +6,6 @@ session_start();
 require('config.php');
 require('connection.php');
 
-
 ?>
 		<?php require_once('header.php'); ?>
 	

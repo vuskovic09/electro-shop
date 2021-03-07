@@ -109,7 +109,7 @@ if(isset($_SESSION['loggedUserName']) && !empty($_SESSION['loggedUserName'])) {
                                     <label><input type="text" name="email" placeholder="E-Mail" /></label>
                                     <label><input type="password" name="pass" placeholder="Password" /></label>
                                     <label><input type="password" name="confirm-pass" placeholder="Confirm Password" /></label>
-                                    <label><input type="submit" name="btn-register" value="Register" />
+                                    <label><input type="submit" name="btn-register" value="Register" /></label>
                                 </form>
                             </div>
                         </div>
